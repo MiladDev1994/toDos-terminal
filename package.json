@@ -1,0 +1,31 @@
+{
+  "name": "terminal-form",
+  "version": "1.0.0",
+  "description": "https://cv-milad-golinejad.liara.run/projects/terminal_form",
+  "main": "src/main.js",
+  "bin": "./src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "dev": "nodemon src/main.js"
+  },
+  "author": "milad golinejad",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "inquirer": "^8.1.0",
+    "inquirer-datepicker": "^2.0.2",
+    "inquirer-select-directory": "^1.2.0",
+    "moment-jalaali": "^0.10.1",
+    "pkg": "^5.3.2"
+  },
+  "pkg": {
+    "assets": [
+      "node_modules/chalk/**/*",
+      "node_modules/inquirer/**/*"
+    ],
+    "scripts": [
+      "node_modules/chalk/source/**/*.js",
+      "node_modules/inquirer/lib/**/*.js"
+    ]
+  }
+}
