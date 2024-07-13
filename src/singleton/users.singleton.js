@@ -18,7 +18,6 @@ class SingletonUsersClass {
 
     async create(name) {
         const maxId = this.#users.length ? Math.max(...this.#users.map(user => user?.id)) : 0
-        console.log(maxId)
         const exist = this.#findByName(name)
         if (exist) return Logger.Error("users_exist")
         const newUser = {

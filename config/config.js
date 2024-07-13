@@ -16,7 +16,7 @@ const publicTasks = {
 }
 
 
-module.exports = Object.freeze({
+const config = Object.freeze({
     list: {
         users: {
             title: "Users",
@@ -26,10 +26,12 @@ module.exports = Object.freeze({
                     add_user: {
                         title: "Add User",
                         child: {
-                            prompt: {
-                                type: 'input',
-                                name: 'Username',
-                                message: chalk.bgBlue('Enter Username:')
+                            prompt: function() {
+                                return {
+                                    type: 'input',
+                                    name: 'Username',
+                                    message: chalk.bgBlue('Enter Username:')
+                                }
                             }
                         }
                     },
@@ -38,6 +40,45 @@ module.exports = Object.freeze({
                         child: {
                             list: {
                                 ...publicTasks,
+                                dynamic: {
+                                    child: {
+                                        list: {
+                                            ...publicTasks,
+                                            edit: {
+                                                title: "Edit",
+                                                child: {
+                                                    prompt: function() {
+                                                        return {
+                                                            type: "input",
+                                                            name: "Edit",
+                                                            message: "Enter new name"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            remove: {
+                                                title: "Delete",
+                                                child: {
+                                                    prompt: function() {
+                                                        return {
+                                                            type: "confirm",
+                                                            name: "Delete",
+                                                            message: "are you sure?!"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        prompt: function() {
+                                            return {
+                                                type: 'list',
+                                                name: 'action',
+                                                // message: chalk.bgGray('Select an item:'),
+                                                choices: listChoices(this)
+                                            }
+                                        }
+                                    }
+                                }
                             },
                             prompt: function() {
                                 return {
@@ -104,3 +145,8 @@ module.exports = Object.freeze({
     //     }
     // }
 })
+
+module.exports = {
+    config, 
+    publicTasks
+}

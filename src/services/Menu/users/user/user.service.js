@@ -1,49 +1,43 @@
 const inquirer = require('inquirer');
 const USERS = require('../../../../singleton/users.singleton');
+const backUtil = require('../../../../utils/back');
 
-function Edit(props) {
-    const {name, back, ended} = props
-    inquirer.prompt({
-        type: "input",
-        name: "Edited",
-        message: "Enter new name"
-    })
+function edit(props) {
+    const {config, name, back, ended} = props
+    inquirer.prompt(config.prompt())
     .then( async (answers) => {
-        const {Edited} = answers
-        if (!Edited) {
+        const {Edit} = answers
+        if (!Edit) {
             Logger.Error("users_failed_update")
             back()
-        } else if (Edited.length < 4) {
+        } else if (Edit.length < 4) {
             Logger.Error("users_length")
             Edit(props)
         } else {
-            await USERS.update(name, Edited)
+            await USERS.update(name, Edit)
             ended()
         }
     })
 
 }
 
-function Delete(props) {
-    const {name, back, ended} = props
-    inquirer.prompt({
-        type: "confirm",
-        name: "Deleted",
-        message: "are you sure?!"
-    })
+function remove(props) {
+    const {config, name, back, ended} = props
+    inquirer.prompt(config.prompt())
     .then((answers) => {
-        const {Deleted} = answers
-        if (!Deleted) {
-            back()
+        const {Delete} = answers
+        if (!Delete) {
+            ended()
         } else {
             USERS.deleteByName(name)
-            ended()
+            back()
         }
     })
 
 }
 
 module.exports = {
-    Edit,
-    Delete
+    back: backUtil,
+    edit,
+    remove
 }

@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const inquirer = require('inquirer');
-const config = require("../config/config")
+const {config} = require("../config/config")
 const menu = require("./services/Menu/menu");
 const findKey = require('./utils/findKey');
 
@@ -17,24 +17,4 @@ function Main() {
         })
     });
 }
-
 Main();
-
-
-
-
-// inquirer.registerPrompt('directory', require('inquirer-select-directory'));
-
-
-// function Main() {
-//     inquirer.prompt({
-//         type: 'directory',
-//         message: "dddd",
-//         name: "milad",
-//         basePath: "C:"
-//       })
-//     .then((answers) => {
-//         const {input} = answers
-//         // console.log(this.list[input])
-//     });
-// }

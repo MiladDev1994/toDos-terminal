@@ -10,7 +10,7 @@ const findKey = require('../../../utils/findKey');
 async function add_user(props) {
     const {config, ended} = props
     
-    inquirer.prompt(config.prompt)
+    inquirer.prompt(config.prompt())
     .then( async (answers) => {
         const {Username} = answers
         if (!Username) {
@@ -61,6 +61,7 @@ async function users_list(props) {
         else res = "user"
 
         userAction[res]({
+            config: list?.dynamic?.child,
             name: User,
             back: ended,
             ended: () => users_list(props)
@@ -68,7 +69,6 @@ async function users_list(props) {
     })
     
 }
-
 
 
 module.exports = {
