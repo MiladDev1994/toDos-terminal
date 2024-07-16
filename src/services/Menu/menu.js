@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const findKey = require('../../utils/findKey');
 const usersMenu = require("./users/users")
+const projectsMenu = require("./projects/projects")
 
 function users(props) {
     const {config, back} = props
@@ -18,14 +19,20 @@ function users(props) {
     });
 }
 
-// function projects(list) {
-//     inquirer.prompt(list.prompt())
-//     .then((answers) => {
-//         const {Menu} = answers
-//         const res = Object.entries(list).find(([key, value]) => value.title === Menu).shift()
-//         // console.log(res)
-//     });
-// }
+function projects(props) {
+    const {config, back} = props
+    const {list} = config
+    inquirer.prompt(config.prompt())
+    .then((answers) => {
+        const {Project} = answers
+        const res = findKey(list, Project)
+        projectsMenu[res]({
+            config: list[res].child,
+            back,
+            ended: () => projects(props)
+        })
+    });
+}
 
 // function tasks(list) {
 //     inquirer.prompt(list.prompt())
@@ -48,7 +55,7 @@ function users(props) {
 
 module.exports = {
     users,
-    // projects,
+    projects,
     // tasks,
     // query_by
 }

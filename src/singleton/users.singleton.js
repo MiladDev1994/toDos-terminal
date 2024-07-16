@@ -4,7 +4,9 @@ let usersInstance;
 
 
 class SingletonUsersClass {
-    #users = [];
+    #users = [
+        {id: 1, name: "milad", role: "admin"}
+    ];
     constructor() {
         if (usersInstance) {
           throw new Error("You can only create one instance!");
@@ -22,7 +24,8 @@ class SingletonUsersClass {
         if (exist) return Logger.Error("users_exist")
         const newUser = {
             id: maxId + 1,
-            name
+            name,
+            role: "user"
         }
         this.#users.push(newUser);
         Logger.Success("users_created")
@@ -42,10 +45,12 @@ class SingletonUsersClass {
         const oldUser = users.splice(userIndex, 1)[0]
         const newUser = {
             id: oldUser.id,
-            name: newName
+            name: newName,
+            role: "user"
         }
         users.splice(userIndex, 0, newUser)
         this.#users = users
+        Logger.Success("user_updated")
         return users
     }
 

@@ -1,21 +1,21 @@
 const inquirer = require('inquirer');
-const USERS = require('../../../../singleton/users.singleton');
 const backUtil = require('../../../../utils/back');
 const Logger = require('../../../../../config/logger');
+const PROJECTS = require('../../../../singleton/projects.singleton');
 
 function edit(props) {
     const {config, name, back, ended} = props
     inquirer.prompt(config.prompt())
     .then( async (answers) => {
-        const {Edit} = answers
-        if (!Edit) {
-            Logger.Error("users_failed_update")
+        const {title, description} = answers
+        if (!title || !description) {
+            Logger.Error("projects_failed_update")
             back()
-        } else if (Edit.length < 4) {
-            Logger.Error("users_length")
+        } else if (title.length < 4 || description.length < 20) {
+            Logger.Error("projects_length")
             edit(props)
         } else {
-            await USERS.update(name, Edit)
+            await PROJECTS.update(name, answers)
             ended()
         }
     })
@@ -30,7 +30,7 @@ function remove(props) {
         if (!Delete) {
             ended()
         } else {
-            USERS.deleteByName(name)
+            PROJECTS.deleteByTitle(name)
             back()
         }
     })

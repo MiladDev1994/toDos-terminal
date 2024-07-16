@@ -102,7 +102,98 @@ const config = Object.freeze({
             }
         },
         projects: {
-            title: "Projects"
+            title: "Projects",
+            child: {
+                list: {
+                    ...publicTasks,
+                    add_project: {
+                        title: "Add Project",
+                        child: {
+                            prompt: function() {
+                                return [
+                                    {
+                                        type: "input",
+                                        name: "title",
+                                        message: "Enter title:"
+                                    },
+                                    {
+                                        type: "input",
+                                        name: "description",
+                                        message: "Enter description:"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    projects_list: {
+                        title: "Projects List",
+                        child: {
+                            list: {
+                                ...publicTasks,
+                                dynamic: {
+                                    child: {
+                                        list: {
+                                            ...publicTasks,
+                                            edit: {
+                                                title: "Edit",
+                                                child: {
+                                                    prompt: function() {
+                                                        return [
+                                                            {
+                                                                type: "input",
+                                                                name: "title",
+                                                                message: "Enter title:"
+                                                            },
+                                                            {
+                                                                type: "input",
+                                                                name: "description",
+                                                                message: "Enter description:"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            remove: {
+                                                title: "Delete",
+                                                child: {
+                                                    prompt: function() {
+                                                        return {
+                                                            type: "confirm",
+                                                            name: "Delete",
+                                                            message: "are you sure?!"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        prompt: function() {
+                                            return {
+                                                type: "list",
+                                                name: "action",
+                                                choices: listChoices(this)
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            prompt: function() {
+                                return {
+                                    type: "list",
+                                    name: "Project",
+                                    choices: listChoices(this)
+                                }
+                            }
+                        }
+                    }
+                },
+                prompt: function() {
+                    return {
+                        type: "list",
+                        name: "Project",
+                        choices: listChoices(this)
+                    }
+                }
+            }
         },
         tasks: {
             title: "Tasks"
@@ -119,31 +210,6 @@ const config = Object.freeze({
             choices: listChoices(this)
         }
     }
-    // list: {
-    //     ...publicTasks,
-    //     "Name": "Name",
-    //     "Family": "Family",
-    //     "Username": "Username",
-    //     "Email": "Email",
-    //     "Phone": "Phone",
-    //     "Age": "Age",
-    //     "Male": "Male",
-    //     "Skills": "Skills",
-    //     "Birth Day": "Birth Day",
-    //     "Favorite": "Favorite",
-    //     "is Working?": "is Working?",
-    //     "Language": "Language",
-    //     "Address": "Address",
-    //     "Groups": "Groups",
-    // },
-    // prompt: function() {
-    //     return {
-    //         type: 'list',
-    //         name: 'input',
-    //         message: chalk.bgGray('Select an input:'),
-    //         choices: Object.keys(this.list)
-    //     }
-    // }
 })
 
 module.exports = {
