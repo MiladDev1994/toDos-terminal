@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.0",
+    "cli-table3": "^0.6.5",
     "inquirer": "^8.1.0",
     "inquirer-datepicker": "^2.0.2",
     "inquirer-select-directory": "^1.2.0",

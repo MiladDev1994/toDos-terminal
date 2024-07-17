@@ -2,6 +2,14 @@ const inquirer = require('inquirer');
 const backUtil = require('../../../../utils/back');
 const Logger = require('../../../../../config/logger');
 const PROJECTS = require('../../../../singleton/projects.singleton');
+const TableUtil = require('../../../../utils/table');
+
+function view(props) {
+    const {config, name, back, ended} = props
+    const findProject = PROJECTS.getByTitle(name)
+    TableUtil(findProject)
+    ended()
+}
 
 function edit(props) {
     const {config, name, back, ended} = props
@@ -39,6 +47,7 @@ function remove(props) {
 
 module.exports = {
     back: backUtil,
+    view,
     edit,
     remove
 }

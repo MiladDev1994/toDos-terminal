@@ -1,9 +1,9 @@
 const chalk = require('chalk');
 const inquirer = require('inquirer');
+inquirer.registerPrompt('datepicker', require('inquirer-datepicker'));
 const {config} = require("../config/config")
 const menu = require("./services/Menu/menu");
 const findKey = require('./utils/findKey');
-
 
 function Main() {
     const {list} = config
