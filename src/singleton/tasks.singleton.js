@@ -5,22 +5,26 @@ let tasksInstance;
 
 class SingletonTasksClass {
     #tasks = [
-        {id: 1, Title: "task_1", Description: "description of task_1", Deadline: Date.now(), User: "milad", Project: 'project_1'},
-        {id: 2, Title: "task_2", Description: "description of task_2", Deadline: Date.now(), User: "user_1", Project: 'project_2'},
-        {id: 3, Title: "task_3", Description: "description of task_3", Deadline: Date.now(), User: "milad", Project: 'project_3'},
-        {id: 4, Title: "task_4", Description: "description of task_4", Deadline: Date.now(), User: "user_1", Project: 'project_4'},
-        {id: 5, Title: "task_5", Description: "description of task_5", Deadline: Date.now(), User: "milad", Project: 'project_5'},
-        {id: 6, Title: "task_6", Description: "description of task_6", Deadline: Date.now(), User: "user_2", Project: 'project_6'},
-        {id: 7, Title: "task_7", Description: "description of task_7", Deadline: Date.now(), User: "milad", Project: 'project_7'},
-        {id: 8, Title: "task_8", Description: "description of task_8", Deadline: Date.now(), User: "user_3", Project: 'project_8'},
-        {id: 9, Title: "task_9", Description: "description of task_9", Deadline: Date.now(), User: "user_3", Project: 'project_9'},
-        {id: 10, Title: "task_10", Description: "description of task_10", Deadline: Date.now(), User: "user_2", Project: 'project_10'}
+        // {id: 1, Title: "task_1", Description: "description of task_1", Deadline: Date.now(), User: "milad", Project: 'project_1'},
+        // {id: 2, Title: "task_2", Description: "description of task_2", Deadline: Date.now(), User: "user_1", Project: 'project_2'},
+        // {id: 3, Title: "task_3", Description: "description of task_3", Deadline: Date.now(), User: "milad", Project: 'project_3'},
+        // {id: 4, Title: "task_4", Description: "description of task_4", Deadline: Date.now(), User: "user_1", Project: 'project_4'},
+        // {id: 5, Title: "task_5", Description: "description of task_5", Deadline: Date.now(), User: "milad", Project: 'project_5'},
+        // {id: 6, Title: "task_6", Description: "description of task_6", Deadline: Date.now(), User: "user_2", Project: 'project_6'},
+        // {id: 7, Title: "task_7", Description: "description of task_7", Deadline: Date.now(), User: "milad", Project: 'project_7'},
+        // {id: 8, Title: "task_8", Description: "description of task_8", Deadline: Date.now(), User: "user_3", Project: 'project_8'},
+        // {id: 9, Title: "task_9", Description: "description of task_9", Deadline: Date.now(), User: "user_3", Project: 'project_9'},
+        // {id: 10, Title: "task_10", Description: "description of task_10", Deadline: Date.now(), User: "user_2", Project: 'project_10'}
     ];
     constructor() {
         if (tasksInstance) {
           throw new Error("You can only create one instance!");
         }
         tasksInstance = this;
+    }
+
+    set(data) {
+        this.#tasks = data
     }
 
     getAll() { 

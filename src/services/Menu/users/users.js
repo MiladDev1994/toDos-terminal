@@ -6,7 +6,6 @@ const USERS = require('../../../singleton/users.singleton');
 const userAction = require("./user/user")
 const findKey = require('../../../utils/findKey');
 
-
 async function add_user(props) {
     const {config, ended} = props
     

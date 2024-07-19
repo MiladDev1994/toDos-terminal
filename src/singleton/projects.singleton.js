@@ -5,22 +5,26 @@ let projectsInstance;
 
 class SingletonProjectsClass {
     #projects = [
-        {id: 1, title: "project_1", description: "description of project_1"},
-        {id: 2, title: "project_2", description: "description of project_2"},
-        {id: 3, title: "project_3", description: "description of project_3"},
-        {id: 4, title: "project_4", description: "description of project_4"},
-        {id: 5, title: "project_5", description: "description of project_5"},
-        {id: 6, title: "project_6", description: "description of project_6"},
-        {id: 7, title: "project_7", description: "description of project_7"},
-        {id: 8, title: "project_8", description: "description of project_8"},
-        {id: 9, title: "project_9", description: "description of project_9"},
-        {id: 10, title: "project_10", description: "description of project_10"}
+        // {id: 1, title: "project_1", description: "description of project_1"},
+        // {id: 2, title: "project_2", description: "description of project_2"},
+        // {id: 3, title: "project_3", description: "description of project_3"},
+        // {id: 4, title: "project_4", description: "description of project_4"},
+        // {id: 5, title: "project_5", description: "description of project_5"},
+        // {id: 6, title: "project_6", description: "description of project_6"},
+        // {id: 7, title: "project_7", description: "description of project_7"},
+        // {id: 8, title: "project_8", description: "description of project_8"},
+        // {id: 9, title: "project_9", description: "description of project_9"},
+        // {id: 10, title: "project_10", description: "description of project_10"}
     ];
     constructor() {
         if (projectsInstance) {
           throw new Error("You can only create one instance!");
         }
         projectsInstance = this;
+    }
+
+    set(data) {
+        this.#projects = data
     }
 
     getAll() { 

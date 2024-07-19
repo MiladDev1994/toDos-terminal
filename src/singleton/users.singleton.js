@@ -5,16 +5,16 @@ let usersInstance;
 
 class SingletonUsersClass {
     #users = [
-        {id: 1, name: "milad", role: "admin"},
-        {id: 1, name: "user_1", role: "user"},
-        {id: 2, name: "user_2", role: "user"},
-        {id: 3, name: "user_3", role: "user"},
-        {id: 4, name: "user_4", role: "user"},
-        {id: 5, name: "user_5", role: "user"},
-        {id: 6, name: "user_6", role: "user"},
-        {id: 7, name: "user_7", role: "user"},
-        {id: 8, name: "user_8", role: "user"},
-        {id: 9, name: "user_9", role: "user"},
+        // {id: 1, name: "milad", role: "admin"},
+        // {id: 2, name: "user_1", role: "user"},
+        // {id: 3, name: "user_2", role: "user"},
+        // {id: 4, name: "user_3", role: "user"},
+        // {id: 5, name: "user_4", role: "user"},
+        // {id: 6, name: "user_5", role: "user"},
+        // {id: 7, name: "user_6", role: "user"},
+        // {id: 8, name: "user_7", role: "user"},
+        // {id: 9, name: "user_8", role: "user"},
+        // {id: 10, name: "user_9", role: "user"},
     ];
     constructor() {
         if (usersInstance) {
@@ -22,6 +22,11 @@ class SingletonUsersClass {
         }
         usersInstance = this;
     }
+
+    set(data) {
+        this.#users = data
+    }
+
 
     getAll() { 
         return this.#users

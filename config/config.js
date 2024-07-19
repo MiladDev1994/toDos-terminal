@@ -354,11 +354,51 @@ const config = Object.freeze({
                             }
                         }
                     },
-                    import: {
+                    import_data: {
                         title: "Import",
+                        child: {
+                            prompt: function() {
+                                return {
+                                    type: 'directory',
+                                    name: 'directory',
+                                    message: chalk.bgGray('Select a directory:'),
+                                    basePath: "C:",
+                                    // options: {
+                                    //     displayFiles: true, // for show files
+                                    //     displayHidden: true // for show hidden files and directory
+                                    // }
+                                }
+                            }
+                        }
                     },
-                    export: {
+                    export_data: {
                         title: "Export",
+                        child: {
+                            list: {
+                                json: {
+                                    title: "Json"
+                                },
+                                excel: {
+                                    title: "Excel"
+                                }
+                            },
+                            prompt: function() {
+                                return [
+                                    {
+                                        type: 'list',
+                                        name: 'type',
+                                        // message: chalk.bgGray('Select an item:'),
+                                        choices: listChoices(this)
+                                    },
+                                    {
+                                        type: 'directory',
+                                        name: 'directory',
+                                        message: chalk.bgGray('Select a directory:'),
+                                        basePath: "C:",
+                                    }
+                                ]
+                            }
+                        }
                     },
                 },
                 prompt: function() {

@@ -1,11 +1,11 @@
-// const users = [
-//     {id: 1, name: "milad1"},
-//     {id: 2, name: "milad2"},
-//     {id: 4, name: "milad3"},
-// ];
 
-// const fff = {}
-// users.forEach(user => fff[user.name] = user.name)
 
-const date = new Date("2024-09-16T15:53:00.000Z")
-console.log(date.getTime())
+var XLSX = require('xlsx')
+
+const  workbook = XLSX.readFile('C:\\Users\\milad\\Desktop\\terminal_todos_2024_7_19_13_12\\todos.xlsx');
+    const  sheets = workbook.SheetNames;
+    const data = {}
+    sheets.forEach((sheet, index) => {
+        data[sheet.toLowerCase()] = XLSX.utils.sheet_to_json(workbook.Sheets[sheets[index]])
+})
+console.log(data);

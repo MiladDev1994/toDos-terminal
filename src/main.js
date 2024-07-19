@@ -1,6 +1,8 @@
 const chalk = require('chalk');
 const inquirer = require('inquirer');
 inquirer.registerPrompt('datepicker', require('inquirer-datepicker'));
+inquirer.registerPrompt('directory', require('inquirer-select-directory'));
+// inquirer.registerPrompt('file-tree-selection', require('inquirer-file-tree-selection-prompt'));
 const {config} = require("../config/config")
 const menu = require("./services/Menu/menu");
 const findKey = require('./utils/findKey');
