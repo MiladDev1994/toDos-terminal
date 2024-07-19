@@ -10,7 +10,7 @@
 ## create executable app
 for windows:
 ```bash
-    pkg -t node14-win-x64 .
+  pkg -t node14-win-x64 .
 ```
 
 <!-- for linux:
