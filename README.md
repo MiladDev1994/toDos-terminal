@@ -1,16 +1,19 @@
 
-## start project in develop mode by command:
+## run project in develop mode:
 ```bash
   npm start
 ```
 
-## create executable app by command
+
+
+
+## create executable app
 for windows:
 ```bash
-    pkg -t node14-win-x64 . // command for create executable file from nodejs app
+    pkg -t node14-win-x64 .
 ```
 
 for linux:
 ```bash
-    pkg -t node14-linux-x64 . // command for create executable file from nodejs app
+    pkg -t node14-linux-x64 .
 ``` 
