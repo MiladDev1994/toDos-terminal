@@ -1,16 +1,17 @@
 {
-  "name": "terminal-form",
+  "name": "todos-terminal",
   "version": "1.0.0",
   "description": "https://cv-milad-golinejad.liara.run/projects/terminal_form",
   "main": "src/main.js",
   "bin": "./src/main.js",
+  "author": "milad golinejad",
+  "license": "ISC",
   "scripts": {
     "start": "node src/main.js",
     "dev": "nodemon src/main.js"
   },
-  "author": "milad golinejad",
-  "license": "ISC",
   "dependencies": {
+    "@jitsi/robotjs": "^0.6.13",
     "chalk": "^4.1.0",
     "cli-table3": "^0.6.5",
     "excel4node": "^1.8.2",
@@ -24,7 +25,8 @@
   "pkg": {
     "assets": [
       "node_modules/chalk/**/*",
-      "node_modules/inquirer/**/*"
+      "node_modules/inquirer/**/*",
+      "node_modules/@jitsi/**/*"
     ],
     "scripts": [
       "node_modules/chalk/source/**/*.js",

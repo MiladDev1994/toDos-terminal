@@ -62,10 +62,22 @@ class SingletonTasksClass {
     }
 
     deleteByTitle(title) {
-        const deleteUser = this.#tasks.filter(task => task.Title !== title)
-        this.#tasks = deleteUser
+        const deleteTask = this.#tasks.filter(task => task.Title !== title)
+        this.#tasks = deleteTask
         Logger.Success("task_deleted")
-        return deleteUser
+        return deleteTask
+    }
+
+    deleteByUser(user) {
+        const deleteTask = this.#tasks.filter(task => task.User !== user)
+        this.#tasks = deleteTask
+        return deleteTask
+    }
+
+    deleteByProject(project) {
+        const deleteTask = this.#tasks.filter(task => task.Project !== project)
+        this.#tasks = deleteTask
+        return deleteTask
     }
 
     async update(oldName, newValues) {

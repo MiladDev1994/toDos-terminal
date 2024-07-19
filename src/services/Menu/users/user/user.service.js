@@ -3,6 +3,7 @@ const USERS = require('../../../../singleton/users.singleton');
 const backUtil = require('../../../../utils/back');
 const TableUtil = require('../../../../utils/table');
 const Logger = require('../../../../../config/logger');
+const TASKS = require('../../../../singleton/tasks.singleton');
 
 function view(props) {
     const {config, name, back, ended} = props
@@ -32,6 +33,7 @@ function edit(props) {
 
 function remove(props) {
     const {config, name, back, ended} = props
+    Logger.Warning("user_dependencies")
     inquirer.prompt(config.prompt())
     .then((answers) => {
         const {Delete} = answers
@@ -39,6 +41,7 @@ function remove(props) {
             ended()
         } else {
             USERS.deleteByName(name)
+            TASKS.deleteByUser(name)
             back()
         }
     })

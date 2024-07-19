@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const backUtil = require("../../../../utils/back");
 const USERS = require('../../../../singleton/users.singleton');
 const findKey = require('../../../../utils/findKey');
-const service = require("./option.service");
+const service = require("./query.service");
 const PROJECTS = require('../../../../singleton/projects.singleton');
 const Logger = require('../../../../../config/logger');
 

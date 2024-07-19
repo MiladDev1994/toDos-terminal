@@ -1,10 +1,10 @@
 const { existsSync, mkdirSync } = require("fs")
 const path = require("path")
-const timestamp2FullDate = require("../../../../../utils/timestamp2FullDate")
 const Excel = require('excel4node');
-const USERS = require("../../../../../singleton/users.singleton");
-const PROJECTS = require("../../../../../singleton/projects.singleton");
-const TASKS = require("../../../../../singleton/tasks.singleton");
+const USERS = require("../../../../singleton/users.singleton");
+const PROJECTS = require("../../../../singleton/projects.singleton");
+const TASKS = require("../../../../singleton/tasks.singleton");
+const timestamp2FullDate = require("../../../../utils/timestamp2FullDate");
 
 async function savePathChecker(directory) {
     const folderName = `terminal_todos_${timestamp2FullDate(Date.now()).replace(/[\/ :]/g, '_')}`

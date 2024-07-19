@@ -6,7 +6,8 @@ const USERS = require('../../../singleton/users.singleton');
 const PROJECTS = require('../../../singleton/projects.singleton');
 const TASKS = require('../../../singleton/tasks.singleton');
 const findKey = require('../../../utils/findKey');
-const taskAction = require("./task/task")
+const taskAction = require("./task/task");
+const Chalk = require('../../../utils/chalk');
 
 
 async function add_task(props) {
@@ -24,7 +25,7 @@ async function add_task(props) {
     const datePicker = {
         type: "datepicker",
         name: "Deadline",
-        message: "Enter Deadline",
+        message: Chalk.input("Enter Deadline: "),
         min: {
           year,
           month,
@@ -36,13 +37,13 @@ async function add_task(props) {
     const usersList = {
         type: "list",
         name: "User",
-        message: "Select User",
+        message: Chalk.input("Select User"),
         choices: users.map(user => user.name)
     }
     const projectsList = {
         type: "list",
         name: "Project",
-        message: "Select Project",
+        message: Chalk.input("Select Project"),
         choices: projects.map(project => project.title)
     }
 

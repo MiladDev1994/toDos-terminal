@@ -13,7 +13,7 @@ for windows:
     pkg -t node14-win-x64 .
 ```
 
-for linux:
+<!-- for linux:
 ```bash
     pkg -t node14-linux-x64 .
-``` 
+```  -->

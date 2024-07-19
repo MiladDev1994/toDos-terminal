@@ -5,6 +5,14 @@ const usersMenu = require("./users/users")
 const projectsMenu = require("./projects/projects")
 const tasksMenu = require("./tasks/tasks")
 const actionsMenu = require("./options/options")
+const robot = require('@jitsi/robotjs');
+
+
+function exit() {
+    robot.keyToggle('control', 'down');
+    robot.keyTap('c');
+    robot.keyToggle('control', 'up');
+}
 
 function users(props) {
     const {config, back} = props
@@ -68,6 +76,7 @@ function options(props) {
 
 
 module.exports = {
+    exit,
     users,
     projects,
     tasks,

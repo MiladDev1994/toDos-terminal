@@ -24,7 +24,7 @@ function TableUtil(data) {
         table.push(Object.entries(row).map(([key, value]) => value));
     });
     
-    console.log(table.toString());
+    Logger.Table(table)
     return table.toString()
 }
 

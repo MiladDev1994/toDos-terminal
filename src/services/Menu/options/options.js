@@ -3,12 +3,13 @@ const path = require("path")
 const inquirer = require('inquirer');
 const backUtil = require("../../../utils/back");
 const findKey = require('../../../utils/findKey');
-const option = require("./option/option")
-const exportMenu = require("./option/export/export");
+const queryBy = require("./query/query")
+const exportTypes = require("./export/export");
 const USERS = require("../../../singleton/users.singleton");
 const PROJECTS = require("../../../singleton/projects.singleton");
 const TASKS = require("../../../singleton/tasks.singleton");
-const importType = require("./option/import/import.service")
+const importType = require("./import/import.service");
+const Logger = require("../../../../config/logger");
 
 
 function query_by(props) {
@@ -18,7 +19,7 @@ function query_by(props) {
         const {Query} = answers
         const {list} = config
         const res = findKey(list, Query)
-        option[res]({
+        queryBy[res]({
             config: list[res].child,
             back: ended,
             ended: () => query_by(props)
@@ -34,7 +35,7 @@ function import_data(props) {
         const readDir = readdirSync(directory)
         const filesType = ["todos.json", "todos.xlsx"]
         if (!readDir.length || !readDir.some(ele => filesType.includes(ele))) {
-            console.log("File not found")
+            Logger.Warning("file_not_found")
             return back()
         }
         readDir.forEach( async (file) => {
@@ -45,10 +46,10 @@ function import_data(props) {
                 if (users.length) USERS.set(users)
                 if (projects.length) PROJECTS.set(projects)
                 if (tasks.length) TASKS.set(tasks)
+                Logger.Success("file_imported")
                 return back()
             }
         })
-        // console.log(readDir);
     })
 }
 
@@ -59,7 +60,7 @@ function export_data(props) {
         const {type, directory} = answers
         const {list} = config
         const res = findKey(list, type)
-        exportMenu[res]({
+        exportTypes[res]({
             directory: directory,
             back: ended,
             ended: () => export_data(props)

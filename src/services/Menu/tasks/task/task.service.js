@@ -28,12 +28,12 @@ function edit(props) {
     const month = date.getMonth()+1;
     const day = date.getDate();
     const hour = date.getHours()+1;
-    const minutes = date.getMinutes(); // 15 minutes
+    const minutes = date.getMinutes();
 
     const datePicker = {
         type: "datepicker",
         name: "Deadline",
-        message: "Enter Deadline",
+        message: Chalk.input("Enter Deadline: "),
         min: {
           year,
           month,
@@ -45,13 +45,13 @@ function edit(props) {
     const usersList = {
         type: "list",
         name: "User",
-        message: "Select User",
+        message: Chalk.input("Select User"),
         choices: users.map(user => user.name)
     }
     const projectsList = {
         type: "list",
         name: "Project",
-        message: "Select Project",
+        message: Chalk.input("Select Project"),
         choices: projects.map(project => project.title)
     }
 
